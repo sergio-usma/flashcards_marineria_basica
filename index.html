@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards de Marinería</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2b6cb0;
+            --accent: #ed8936;
+            --bg: #f7fafc;
+            --text: #2d3748;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 { color: var(--primary); text-align: center; }
+        .progress { margin-bottom: 20px; font-weight: bold; }
+
+        /* Contenedor de la tarjeta */
+        .card-container {
+            width: 350px;
+            height: 250px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 15px;
+        }
+
+        .card-container.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+            border-radius: 15px;
+            border: 2px solid var(--primary);
+        }
+
+        .card-front {
+            background-color: white;
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .card-back {
+            background-color: var(--secondary);
+            color: white;
+            transform: rotateY(180deg);
+            font-size: 1.1rem;
+        }
+
+        /* Controles */
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover { background-color: var(--accent); }
+        button:disabled { background-color: #cbd5e0; cursor: not-allowed; }
+
+        @media (max-width: 400px) {
+            .card-container { width: 90vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Estudio de Marinería</h1>
+    <div class="progress" id="progress">Tarjeta 1 de 100</div>
+
+    <div class="card-container" id="card" onclick="flipCard()">
+        <div class="card-inner">
+            <div class="card-front" id="question">Cargando...</div>
+            <div class="card-back" id="answer">Cargando...</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="prevBtn" onclick="prevCard()" disabled>Anterior</button>
+        <button id="nextBtn" onclick="nextCard()">Siguiente</button>
+    </div>
+
+    <script>
+        const flashcards = [
+            { q: "¿Qué es la marinería?", a: "Es la profesión, oficio o ejercicio del hombre de mar." },
+            { q: "¿Qué es un buque?", a: "Toda construcción flotante con propulsión propia destinada al transporte por agua." },
+            { q: "¿Qué es el casco?", a: "Es el cuerpo propiamente dicho del buque en contacto directo con el agua." },
+            { q: "¿Qué es el plano de flotación?", a: "Es el plano formado por la superficie del agua." },
+            { q: "¿Qué es la línea de flotación?", a: "La intersección del plano de flotación con la superficie exterior del casco." },
+            { q: "¿Qué es la obra viva o carena?", a: "Es la parte sumergida del buque por debajo de la línea de flotación." },
+            { q: "¿Qué es la obra muerta?", a: "Es la parte del buque que emerge por encima de la línea de flotación." },
+            { q: "¿Qué es la proa?", a: "Es la extremidad delantera del buque." },
+            { q: "¿Qué es la popa?", a: "Es la sección o extremidad posterior del buque." },
+            { q: "¿Qué son los costados?", a: "Cada una de las bandas simétricas divididas por la línea de crujía." },
+            { q: "¿Qué es estribor?", a: "El costado derecho del buque mirando de popa hacia proa." },
+            { q: "¿Qué es babor?", a: "El costado izquierdo del buque mirando de popa hacia proa." },
+            { q: "¿Qué es la crujía?", a: "Línea imaginaria longitudinal que divide al buque en dos mitades." },
+            { q: "¿Qué es el través?", a: "Parte media del buque que lo divide transversalmente." },
+            { q: "¿Qué es la mediacubierta?", a: "Espacio intermedio en la cubierta principal entre proa y popa." },
+            { q: "¿Qué es el combés?", a: "Espacio desde la mediacubierta hasta la sección de proa." },
+            { q: "¿Qué son las amuras?", a: "Partes más curvas del casco en la sección de proa." },
+            { q: "¿Qué son las aletas?", a: "Partes de los costados situadas a 45° con referencia a la popa." },
+            { q: "¿Qué es el pantoque?", a: "Parte curva del casco donde se une el costado y el fondo." },
+            { q: "¿Qué es el espejo?", a: "Fachada de la popa donde suele ir el nombre del buque." },
+            { q: "¿Qué es el coronamiento?", a: "Canto superior del espejo de popa." },
+            { q: "¿Qué es barlovento?", a: "Dirección de donde viene el viento." },
+            { q: "¿Qué es sotavento?", a: "Dirección hacia la cual va el viento." },
+            { q: "¿Qué es el balanceo?", a: "Movimiento de oscilación del buque de un costado a otro." },
+            { q: "¿Qué es el cabeceo?", a: "Movimiento vertical alzando y bajando alternadamente proa y popa." },
+            { q: "¿Cuándo está un buque aproado?", a: "Cuando tiene mayor calado en la proa que en la popa." },
+            { q: "¿Cuándo está un buque apopado?", a: "Cuando tiene mayor calado en la popa que en la proa." },
+            { q: "¿Qué es estar escorado?", a: "Inclinación hacia una banda por carga, viento o avería." },
+            { q: "¿Qué es estar adrizado?", a: "Cuando el buque mantiene su posición normal de equilibrio." },
+            { q: "¿Qué es el arrufo?", a: "Deformación donde los extremos de proa y popa son más altos que el centro." },
+            { q: "¿Qué es el quebranto?", a: "Deformación donde los extremos de proa y popa son más bajos que el centro." },
+            { q: "¿Qué es atracar?", a: "Operación de colocar y asegurar el buque al costado del muelle." },
+            { q: "¿Qué es abarloar?", a: "Colocar un buque paralelo al costado de otro." },
+            { q: "¿Qué es fondear?", a: "Botar el ancla al agua para sujetar el buque al fondo." },
+            { q: "¿Qué es acoderar?", a: "Amarrar el buque por proa y popa a dos puntos fijos o muertos." },
+            { q: "¿Qué es una barloa?", a: "Cabo o cable usado para asegurar el buque al muelle o a otro buque." },
+            { q: "¿Qué es una codera?", a: "Cabo dado desde popa para retenerla o facilitar maniobras." },
+            { q: "¿Qué es el borneo?", a: "Giro del buque alrededor de su punto de sujeción (ancla o boya)." },
+            { q: "¿Qué es entalingar la cadena?", a: "Operación de fijar la cadena al arganeo del ancla." },
+            { q: "¿Qué es guarnir la cadena?", a: "Pasar la cadena alrededor de la corona del barbotín." },
+            { q: "¿Qué es filar cadena?", a: "Arriar progresivamente una cadena que está trabajando." },
+            { q: "¿Qué es el garreo?", a: "Arrastre involuntario del ancla sobre el fondo." },
+            { q: "¿Qué es el orinque?", a: "Cabo delgado con boyarín para señalar la posición del ancla." },
+            { q: "¿Qué significa 'a flote'?", a: "Cuerpo en el agua soportado por su propia flotabilidad." },
+            { q: "¿Qué significa 'a la deriva'?", a: "Embarcación sin gobierno a merced del viento y corriente." },
+            { q: "¿Qué es amarrar?", a: "Acto de atar una línea a un punto fijo como bita o cornamusa." },
+            { q: "¿Qué es arriar?", a: "Operación de bajar un objeto." },
+            { q: "¿Qué es izar?", a: "Operación de subir un objeto." },
+            { q: "¿Qué es el ancla?", a: "Instrumento de hierro forjado para aguantar el buque al fondo." },
+            { q: "¿Qué es ancla 'a pique'?", a: "Posición del ancla colgando justo tras despegar del fondo." },
+            { q: "¿Qué es ancla 'a flor de agua'?", a: "Ancla nivelada con la superficie del agua." },
+            { q: "¿Qué es ancla 'a la pendura'?", a: "Ancla colgando fuera del agua lista para fondear." },
+            { q: "¿Qué es el alcázar?", a: "Espacio de la cubierta superior tras el palo de popa." },
+            { q: "¿Qué es una boya?", a: "Cuerpo flotante anclado usado como ayuda a la navegación." },
+            { q: "¿Qué es un barómetro?", a: "Instrumento que mide la presión atmosférica." },
+            { q: "¿Qué es el estadímetro?", a: "Instrumento para determinar distancias mediante una altura conocida." },
+            { q: "¿Qué es el cabillero?", a: "Tablón con agujeros donde se introducen las cabillas." },
+            { q: "¿Qué es una cabilla?", a: "Clavija para dar vueltas y hacer firme los cabos de labor." },
+            { q: "¿Qué es el girocompás?", a: "Aparato electrónico que indica constantemente el norte." },
+            { q: "¿Qué es el pito marinero?", a: "Dispositivo para producir pitadas reglamentarias." },
+            { q: "¿Qué es el propao?", a: "Barandilla alrededor del palo con cabillero." },
+            { q: "¿Qué es el telégrafo de máquinas?", a: "Dispositivo de comunicación entre el puente y máquinas." },
+            { q: "¿Qué es la vista clara?", a: "Disco de cristal giratorio para mantener visibilidad bajo lluvia." },
+            { q: "¿Qué es la flotabilidad?", a: "Propiedad del buque de sumergirse hasta cierto calado." },
+            { q: "¿Qué es la solidez?", a: "Estructura robusta para resistir esfuerzos de mar y carga." },
+            { q: "¿Qué es la estanqueidad?", a: "Cualidad que evita la entrada de agua al interior." },
+            { q: "¿Qué es la estabilidad?", a: "Capacidad del buque de volver a su posición de equilibrio." },
+            { q: "¿Qué es el principio de Arquímedes?", a: "Todo cuerpo sumergido recibe un empuje igual al peso del fluido desalojado." },
+            { q: "¿Qué es la manga?", a: "Ancho máximo del casco del buque." },
+            { q: "¿Qué es el puntal?", a: "Altura desde la quilla hasta la cubierta principal." },
+            { q: "¿Qué es el calado?", a: "Distancia vertical desde la línea de flotación hasta la quilla." },
+            { q: "¿Qué es la eslora?", a: "Longitud total del buque de proa a popa." },
+            { q: "¿Qué es el francobordo?", a: "Distancia vertical entre la línea de flotación y la cubierta superior." },
+            { q: "¿Qué es el desplazamiento?", a: "Peso total del buque, equivalente al agua que desaloja." },
+            { q: "¿Qué es el porte (DWT)?", a: "Indicador de la capacidad máxima de carga útil del buque." },
+            { q: "¿Qué es el tonelaje bruto?", a: "Peso total del buque incluyendo la carga." },
+            { q: "¿Qué es la autonomía?", a: "Tiempo máximo que el buque puede navegar sin reabastecerse." },
+            { q: "¿Qué es el radio de acción?", a: "Distancia máxima de ida y vuelta sin repostar combustible." },
+            { q: "¿Qué es el círculo evolutivo?", a: "Trayectoria que describe el buque al girar con timón fijo." },
+            { q: "¿Qué es la guinda?", a: "Altura desde la flotación hasta el punto más alto del palo." },
+            { q: "¿Qué es una cuaderna?", a: "Pieza curva transversal que da rigidez al casco ('costilla')." },
+            { q: "¿Qué es un bao?", a: "Viga transversal que sostiene las cubiertas y afirma los costados." },
+            { q: "¿Qué es la regala?", a: "Parte superior de la borda que la cubre." },
+            { q: "¿Qué es una varenga?", a: "Refuerzo transversal que une quilla, cuaderna y sobrequilla." },
+            { q: "Materiales en construcción naval:", a: "Madera, acero, aluminio, fibra de vidrio y kevlar." },
+            { q: "¿Qué caracteriza a una embarcación menor?", a: "Dimensiones pequeñas, usada para recreo, pesca o transporte corto." },
+            { q: "¿Qué es un remolcador de hélice?", a: "Usa hélices fijas y timón para dirigir el empuje." },
+            { q: "¿Qué es un remolcador azimutal?", a: "Tiene unidades de propulsión que giran 360°." },
+            { q: "¿Primeros constructores de barcos?", a: "Los egipcios, hace casi 11,000 años." },
+            { q: "¿Uso de naves egipcias en el Nilo?", a: "Transporte de piedras para pirámides, mercancías y personas." },
+            { q: "¿Qué es un birreme?", a: "Barco con dos filas de remos por cada lado." },
+            { q: "¿Qué es un trirreme?", a: "Barco con tres filas de remos por cada lado." },
+            { q: "¿Qué era el drakkar?", a: "Barco vikingo sólido para combate y viajes largos." },
+            { q: "¿Siglos de mayores exploraciones?", a: "Siglos XV y XVI." },
+            { q: "¿Nave de Colón para América?", a: "Una carabela." },
+            { q: "¿Primera vuelta al mundo?", a: "Fernando de Magallanes y Juan Sebastián Elcano." },
+            { q: "¿Qué era el bajel?", a: "Considerado el acorazado de la época de la navegación a vela." },
+            { q: "¿Qué eran los Clipper?", a: "Veleros veloces y elegantes del siglo XIX." },
+            { q: "¿Cuándo el vapor sustituyó a la vela?", a: "A comienzos del siglo XX." },
+            { q: "¿Barco hundido en 1912?", a: "El Titanic." }
+        ];
+
+        let currentIndex = 0;
+
+        function updateCard() {
+            const cardElement = document.getElementById('card');
+            cardElement.classList.remove('flipped');
+            
+            // Esperar un momento a que la tarjeta se voltee antes de cambiar el texto
+            setTimeout(() => {
+                document.getElementById('question').textContent = flashcards[currentIndex].q;
+                document.getElementById('answer').textContent = flashcards[currentIndex].a;
+                document.getElementById('progress').textContent = `Tarjeta ${currentIndex + 1} de ${flashcards.length}`;
+                
+                document.getElementById('prevBtn').disabled = currentIndex === 0;
+                document.getElementById('nextBtn').disabled = currentIndex === flashcards.length - 1;
+            }, 150);
+        }
+
+        function flipCard() {
+            document.getElementById('card').classList.toggle('flipped');
+        }
+
+        function nextCard() {
+            if (currentIndex < flashcards.length - 1) {
+                currentIndex++;
+                updateCard();
+            }
+        }
+
+        function prevCard() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateCard();
+            }
+        }
+
+        // Inicializar
+        updateCard();
+    </script>
+</body>
+</html>
