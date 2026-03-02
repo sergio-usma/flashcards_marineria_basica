@@ -3,322 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marinería Flashcards - Bilingüe</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    <style>
-        :root {
-            --primary: #1a365d;
-            --secondary: #2b6cb0;
-            --accent: #ed8936;
-            --bg: #f0f4f8;
-            --text: #1a202c;
-        }
-
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-        }
-
-        .language-selector {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: white;
-            padding: 10px 15px;
-            border-radius: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            cursor: pointer;
-            border: 2px solid var(--primary);
-            transition: all 0.3s ease;
-            z-index: 1000;
-        }
-
-        .language-selector:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .material-symbols-outlined {
-            vertical-align: middle;
-        }
-
-        h1 { color: var(--primary); text-align: center; margin-bottom: 5px; }
-        .progress { margin-bottom: 25px; color: var(--secondary); font-weight: 600; }
-
-        .card-container {
-            width: 400px;
-            height: 280px;
-            perspective: 1000px;
-            cursor: pointer;
-        }
-
-        .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-
-        .card-container.flipped .card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-            box-sizing: border-box;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            text-align: center;
-            font-size: 1.25rem;
-            overflow-y: auto;
-        }
-
-        .card-front {
-            background: white;
-            color: var(--primary);
-            border: 3px solid var(--primary);
-        }
-
-        .card-back {
-            background: var(--primary);
-            color: white;
-            transform: rotateY(180deg);
-            font-weight: 300;
-        }
-
-        .controls {
-            margin-top: 40px;
-            display: flex;
-            gap: 20px;
-        }
-
-        button {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.2s;
-        }
-
-        button:hover:not(:disabled) {
-            background-color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        button:disabled {
-            background-color: #cbd5e0;
-            cursor: not-allowed;
-        }
-
-        @media (max-width: 450px) {
-            .card-container { width: 90vw; }
-        }
-    </style>
+    <title>Marinería Flashcards · ENAP</title>
+    <!-- Bootstrap 5 + Iconos -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="language-selector" onclick="toggleLanguage()">
-        <span class="material-symbols-outlined">language</span>
-        <span id="langLabel">English</span>
-    </div>
-
-    <h1 id="mainTitle">Estudio de Marinería</h1>
-    <div class="progress" id="progress">Tarjeta 1 de 100</div>
-
-    <div class="card-container" id="card" onclick="flipCard()">
-        <div class="card-inner">
-            <div class="card-front" id="question">Cargando...</div>
-            <div class="card-back" id="answer">Cargando...</div>
+    <!-- NAVBAR (obligatorio) -->
+    <nav class="navbar py-2">
+        <div class="container d-flex align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="logo_ENAP.png" alt="Logo ENAP" class="logo-enap me-3" />
+                <div class="vr me-3 d-none d-md-block" style="height: 60px; opacity: 0.2"></div>
+                <div class="d-flex flex-column">
+                    <span class="fw-semibold fs-6" style="color: var(--primary); line-height: 1.3">
+                        Escuela Naval de Cadetes Almirante Padilla
+                    </span>
+                    <span class="small" style="color: var(--primary)">División de Marina Mercante</span>
+                    <span class="small" style="color: var(--primary)">Programa de Ciencias Náuticas Especialidad Puente</span>
+                </div>
+            </div>
+            <div class="d-flex align-items-center">
+                <!-- Botón modo oscuro (escritorio) -->
+                <button class="btn btn-icon me-2" id="darkModeToggle" type="button" aria-label="Alternar modo oscuro">
+                    <i class="bi bi-moon-fill dark-mode-icon" id="darkModeIcon"></i>
+                </button>
+                <span class="badge-flag" id="progressBadge">0 / 0</span>
+            </div>
         </div>
-    </div>
+    </nav>
 
-    <div class="controls">
-        <button id="prevBtn" onclick="prevCard()" disabled>
-            <span class="material-symbols-outlined">arrow_back</span>
-            <span id="prevText">Anterior</span>
-        </button>
-        <button id="nextBtn" onclick="nextCard()">
-            <span id="nextText">Siguiente</span>
-            <span class="material-symbols-outlined">arrow_forward</span>
-        </button>
-    </div>
+    <!-- MAIN: título, progreso y pestañas -->
+    <main class="container my-4">
+        <h1 class="titulo mb-4">Módulo: Conceptos de Marinería</h1>
+        <div class="mb-4">
+            <div class="d-flex justify-content-between mb-2">
+                <span class="fw-bold text-muted"><i class="bi bi-bar-chart-fill me-1"></i> Progreso del Módulo Completo</span>
+                <span class="fw-bold" id="progress-text">0/0</span>
+            </div>
+            <div class="progress progress-custom">
+                <div class="progress-bar progress-bar-custom" id="global-progress" role="progressbar" style="width: 0%"></div>
+            </div>
+        </div>
 
-    <script>
-        let currentLang = 'es';
-        let currentIndex = 0;
+        <!-- Pestañas de navegación -->
+        <ul class="nav nav-tabs mb-4" id="studyTabs" role="tablist">
+            <li class="nav-item" style="display: none;">
+                <button class="nav-link fw-bold" data-bs-toggle="tab" data-bs-target="#lectures-pane">
+                    <i class="bi bi-book me-1"></i> Lecturas
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link active fw-bold" data-bs-toggle="tab" data-bs-target="#flashcards">
+                    <i class="bi bi-card-text me-1"></i> Flashcards
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link fw-bold" data-bs-toggle="tab" data-bs-target="#quiz">
+                    <i class="bi bi-ui-checks me-1"></i> Quiz
+                </button>
+            </li>
+            <li class="nav-item">
+                <button class="nav-link fw-bold" data-bs-toggle="tab" data-bs-target="#anexos">
+                    <i class="bi bi-images me-1"></i> Anexos
+                </button>
+            </li>
+            <li class="nav-item" style="display: none;">
+                <button class="nav-link fw-bold" data-bs-toggle="tab" data-bs-target="#summary">
+                    <i class="bi bi-list-check me-1"></i> Resumen
+                </button>
+            </li>
+        </ul>
 
-        // Base de datos completa con 100 entradas (español e inglés)
-        const data = [
-            // 1-10
-            { es_q: "¿Qué es la marinería?", en_q: "What is seamanship?", es_a: "Es la profesión, oficio o ejercicio del hombre de mar.", en_a: "It is the profession, trade, or practice of the seaman." },
-            { es_q: "¿Qué es un buque?", en_q: "What is a vessel?", es_a: "Toda construcción flotante con propulsión propia destinada al transporte por agua.", en_a: "Any floating construction with its own propulsion intended for water transport." },
-            { es_q: "¿Qué es el casco?", en_q: "What is the hull?", es_a: "Es el cuerpo propiamente dicho del buque en contacto directo con el agua.", en_a: "The main body of the vessel in direct contact with the water." },
-            { es_q: "¿Qué es el plano de flotación?", en_q: "What is the waterplane?", es_a: "Es el plano formado por la superficie del agua.", en_a: "The plane formed by the water surface." },
-            { es_q: "¿Qué es la línea de flotación?", en_q: "What is the waterline?", es_a: "La intersección del plano de flotación con la superficie exterior del casco.", en_a: "The intersection of the waterplane with the outer surface of the hull." },
-            { es_q: "¿Qué es la obra viva o carena?", en_q: "What is the underwater hull?", es_a: "Es la parte sumergida del buque por debajo de la línea de flotación.", en_a: "The submerged part of the vessel below the waterline." },
-            { es_q: "¿Qué es la obra muerta?", en_q: "What is the deadwork?", es_a: "Es la parte del buque que emerge por encima de la línea de flotación.", en_a: "The part of the vessel above the waterline." },
-            { es_q: "¿Qué es la proa?", en_q: "What is the bow?", es_a: "Es la extremidad delantera del buque.", en_a: "The forward end of the vessel." },
-            { es_q: "¿Qué es la popa?", en_q: "What is the stern?", es_a: "Es la sección o extremidad posterior del buque.", en_a: "The aft section or rear end of the vessel." },
-            { es_q: "¿Qué son los costados?", en_q: "What are the sides?", es_a: "Cada una de las bandas simétricas divididas por la línea de crujía.", en_a: "Each of the symmetrical sides divided by the centerline." },
-            // 11-20
-            { es_q: "¿Qué es estribor?", en_q: "What is starboard?", es_a: "El costado derecho del buque mirando de popa hacia proa.", en_a: "The right side of the ship when looking from stern to bow." },
-            { es_q: "¿Qué es babor?", en_q: "What is port?", es_a: "El costado izquierdo del buque mirando de popa hacia proa.", en_a: "The left side of the ship when looking from stern to bow." },
-            { es_q: "¿Qué es la crujía?", en_q: "What is the centerline?", es_a: "Línea imaginaria longitudinal que divide al buque en dos mitades.", en_a: "An imaginary longitudinal line dividing the vessel into two halves." },
-            { es_q: "¿Qué es el través?", en_q: "What is the beam?", es_a: "Parte media del buque que lo divide transversalmente.", en_a: "The midship section that divides it transversely." },
-            { es_q: "¿Qué es la mediacubierta?", en_q: "What is the waist?", es_a: "Espacio intermedio en la cubierta principal entre proa y popa.", en_a: "The intermediate space on the main deck between bow and stern." },
-            { es_q: "¿Qué es el combés?", en_q: "What is the well deck?", es_a: "Espacio desde la mediacubierta hasta la sección de proa.", en_a: "The space from the waist to the bow section." },
-            { es_q: "¿Qué son las amuras?", en_q: "What are the bows?", es_a: "Partes más curvas del casco en la sección de proa.", en_a: "The most curved parts of the hull in the bow section." },
-            { es_q: "¿Qué son las aletas?", en_q: "What are the quarters?", es_a: "Partes de los costados situadas a 45° con referencia a la popa.", en_a: "Parts of the sides located at 45° relative to the stern." },
-            { es_q: "¿Qué es el pantoque?", en_q: "What is the bilge?", es_a: "Parte curva del casco donde se une el costado y el fondo.", en_a: "The curved part of the hull where the side and bottom meet." },
-            { es_q: "¿Qué es el espejo?", en_q: "What is the transom?", es_a: "Fachada de la popa donde suele ir el nombre del buque.", en_a: "The stern facade where the vessel's name is usually placed." },
-            // 21-30
-            { es_q: "¿Qué es el coronamiento?", en_q: "What is the taffrail?", es_a: "Canto superior del espejo de popa.", en_a: "The upper edge of the stern transom." },
-            { es_q: "¿Qué es barlovento?", en_q: "What is windward?", es_a: "Dirección de donde viene el viento.", en_a: "The direction from which the wind comes." },
-            { es_q: "¿Qué es sotavento?", en_q: "What is leeward?", es_a: "Dirección hacia la cual va el viento.", en_a: "The direction toward which the wind is going." },
-            { es_q: "¿Qué es el balanceo?", en_q: "What is rolling?", es_a: "Movimiento de oscilación del buque de un costado a otro.", en_a: "Oscillation movement of the vessel from side to side." },
-            { es_q: "¿Qué es el cabeceo?", en_q: "What is pitching?", es_a: "Movimiento vertical alzando y bajando alternadamente proa y popa.", en_a: "Vertical movement alternately raising and lowering the bow and stern." },
-            { es_q: "¿Cuándo está un buque aproado?", en_q: "When is a vessel trimmed by the head?", es_a: "Cuando tiene mayor calado en la proa que en la popa.", en_a: "When it has a greater draft at the bow than at the stern." },
-            { es_q: "¿Cuándo está un buque apopado?", en_q: "When is a vessel trimmed by the stern?", es_a: "Cuando tiene mayor calado en la popa que en la proa.", en_a: "When it has a greater draft at the stern than at the bow." },
-            { es_q: "¿Qué es estar escorado?", en_q: "What is being heeled?", es_a: "Inclinación hacia una banda por carga, viento o avería.", en_a: "Inclination to one side due to cargo, wind, or damage." },
-            { es_q: "¿Qué es estar adrizado?", en_q: "What is being upright?", es_a: "Cuando el buque mantiene su posición normal de equilibrio.", en_a: "When the vessel maintains its normal equilibrium position." },
-            { es_q: "¿Qué es el arrufo?", en_q: "What is hogging?", es_a: "Deformación donde los extremos de proa y popa son más altos que el centro.", en_a: "Deformation where the bow and stern ends are higher than the center." },
-            // 31-40
-            { es_q: "¿Qué es el quebranto?", en_q: "What is sagging?", es_a: "Deformación donde los extremos de proa y popa son más bajos que el centro.", en_a: "Deformation where the bow and stern ends are lower than the center." },
-            { es_q: "¿Qué es atracar?", en_q: "What is berthing?", es_a: "Operación de colocar y asegurar el buque al costado del muelle.", en_a: "Operation of placing and securing the vessel alongside the dock." },
-            { es_q: "¿Qué es abarloar?", en_q: "What is coming alongside?", es_a: "Colocar un buque paralelo al costado de otro.", en_a: "Placing a vessel parallel to the side of another." },
-            { es_q: "¿Qué es fondear?", en_q: "What is anchoring?", es_a: "Botar el ancla al agua para sujetar el buque al fondo.", en_a: "Dropping the anchor into the water to hold the vessel to the bottom." },
-            { es_q: "¿Qué es acoderar?", en_q: "What is mooring bow and stern?", es_a: "Amarrar el buque por proa y popa a dos puntos fijos o muertos.", en_a: "Mooring the vessel by bow and stern to two fixed points or moorings." },
-            { es_q: "¿Qué es una barloa?", en_q: "What is a mooring line?", es_a: "Cabo o cable usado para asegurar el buque al muelle o a otro buque.", en_a: "Rope or cable used to secure the vessel to the dock or another vessel." },
-            { es_q: "¿Qué es una codera?", en_q: "What is a stern line?", es_a: "Cabo dado desde popa para retenerla o facilitar maniobras.", en_a: "Line led from the stern to hold it back or facilitate maneuvers." },
-            { es_q: "¿Qué es el borneo?", en_q: "What is swinging?", es_a: "Giro del buque alrededor de su punto de sujeción (ancla o boya).", en_a: "The vessel's turn around its holding point (anchor or buoy)." },
-            { es_q: "¿Qué es entalingar la cadena?", en_q: "What is bending the cable?", es_a: "Operación de fijar la cadena al arganeo del ancla.", en_a: "Operation of securing the chain to the anchor ring." },
-            { es_q: "¿Qué es guarnir la cadena?", en_q: "What is rendering the cable?", es_a: "Pasar la cadena alrededor de la corona del barbotín.", en_a: "Passing the chain around the wildcat crown." },
-            // 41-50
-            { es_q: "¿Qué es filar cadena?", en_q: "What is paying out chain?", es_a: "Arriar progresivamente una cadena que está trabajando.", en_a: "Progressively lowering a chain that is under load." },
-            { es_q: "¿Qué es el garreo?", en_q: "What is dragging anchor?", es_a: "Arrastre involuntario del ancla sobre el fondo.", en_a: "Involuntary dragging of the anchor along the bottom." },
-            { es_q: "¿Qué es el orinque?", en_q: "What is a buoy rope?", es_a: "Cabo delgado con boyarín para señalar la posición del ancla.", en_a: "Thin line with a small buoy to mark the anchor's position." },
-            { es_q: "¿Qué significa 'a flote'?", en_q: "What does 'afloat' mean?", es_a: "Cuerpo en el agua soportado por su propia flotabilidad.", en_a: "A body in the water supported by its own buoyancy." },
-            { es_q: "¿Qué significa 'a la deriva'?", en_q: "What does 'adrift' mean?", es_a: "Embarcación sin gobierno a merced del viento y corriente.", en_a: "A vessel without control, at the mercy of wind and current." },
-            { es_q: "¿Qué es amarrar?", en_q: "What is to moor?", es_a: "Acto de atar una línea a un punto fijo como bita o cornamusa.", en_a: "The act of tying a line to a fixed point such as a bollard or cleat." },
-            { es_q: "¿Qué es arriar?", en_q: "What is to lower?", es_a: "Operación de bajar un objeto.", en_a: "The operation of lowering an object." },
-            { es_q: "¿Qué es izar?", en_q: "What is to hoist?", es_a: "Operación de subir un objeto.", en_a: "The operation of raising an object." },
-            { es_q: "¿Qué es el ancla?", en_q: "What is an anchor?", es_a: "Instrumento de hierro forjado para aguantar el buque al fondo.", en_a: "A forged iron instrument to hold the vessel to the bottom." },
-            { es_q: "¿Qué es ancla 'a pique'?", en_q: "What is anchor 'aweigh'?", es_a: "Posición del ancla colgando justo tras despegar del fondo.", en_a: "Position of the anchor hanging just after breaking ground." },
-            // 51-60
-            { es_q: "¿Qué es ancla 'a flor de agua'?", en_q: "What is anchor 'awash'?", es_a: "Ancla nivelada con la superficie del agua.", en_a: "Anchor leveled with the water surface." },
-            { es_q: "¿Qué es ancla 'a la pendura'?", en_q: "What is anchor 'at short stay'?", es_a: "Ancla colgando fuera del agua lista para fondear.", en_a: "Anchor hanging out of the water ready for letting go." },
-            { es_q: "¿Qué es el alcázar?", en_q: "What is the quarterdeck?", es_a: "Espacio de la cubierta superior tras el palo de popa.", en_a: "Space on the upper deck aft of the mizzen mast." },
-            { es_q: "¿Qué es una boya?", en_q: "What is a buoy?", es_a: "Cuerpo flotante anclado usado como ayuda a la navegación.", en_a: "An anchored floating body used as a navigation aid." },
-            { es_q: "¿Qué es un barómetro?", en_q: "What is a barometer?", es_a: "Instrumento que mide la presión atmosférica.", en_a: "Instrument that measures atmospheric pressure." },
-            { es_q: "¿Qué es el estadímetro?", en_q: "What is a stadimeter?", es_a: "Instrumento para determinar distancias mediante una altura conocida.", en_a: "Instrument for determining distances using a known height." },
-            { es_q: "¿Qué es el cabillero?", en_q: "What is a pin rail?", es_a: "Tablón con agujeros donde se introducen las cabillas.", en_a: "Plank with holes into which belaying pins are inserted." },
-            { es_q: "¿Qué es una cabilla?", en_q: "What is a belaying pin?", es_a: "Clavija para dar vueltas y hacer firme los cabos de labor.", en_a: "Pin to take turns and secure running rigging." },
-            { es_q: "¿Qué es el girocompás?", en_q: "What is a gyrocompass?", es_a: "Aparato electrónico que indica constantemente el norte.", en_a: "Electronic device that constantly indicates north." },
-            { es_q: "¿Qué es el pito marinero?", en_q: "What is a boatswain's pipe?", es_a: "Dispositivo para producir pitadas reglamentarias.", en_a: "Device used to produce regulatory whistles." },
-            // 61-70
-            { es_q: "¿Qué es el propao?", en_q: "What is a fife rail?", es_a: "Barandilla alrededor del palo con cabillero.", en_a: "Rail around the mast with a pin rail." },
-            { es_q: "¿Qué es el telégrafo de máquinas?", en_q: "What is an engine order telegraph?", es_a: "Dispositivo de comunicación entre el puente y máquinas.", en_a: "Communication device between the bridge and engines." },
-            { es_q: "¿Qué es la vista clara?", en_q: "What is a clear view screen?", es_a: "Disco de cristal giratorio para mantener visibilidad bajo lluvia.", en_a: "Rotating glass disc to maintain visibility in rain." },
-            { es_q: "¿Qué es la flotabilidad?", en_q: "What is buoyancy?", es_a: "Propiedad del buque de sumergirse hasta cierto calado.", en_a: "Property of the vessel to sink to a certain draft." },
-            { es_q: "¿Qué es la solidez?", en_q: "What is strength?", es_a: "Estructura robusta para resistir esfuerzos de mar y carga.", en_a: "Robust structure to withstand sea and cargo stresses." },
-            { es_q: "¿Qué es la estanqueidad?", en_q: "What is watertightness?", es_a: "Cualidad que evita la entrada de agua al interior.", en_a: "Quality that prevents water from entering the interior." },
-            { es_q: "¿Qué es la estabilidad?", en_q: "What is stability?", es_a: "Capacidad del buque de volver a su posición de equilibrio.", en_a: "Ability of the vessel to return to its equilibrium position." },
-            { es_q: "¿Qué es el principio de Arquímedes?", en_q: "What is Archimedes' principle?", es_a: "Todo cuerpo sumergido recibe un empuje igual al peso del fluido desalojado.", en_a: "Any submerged body receives an upward force equal to the weight of the displaced fluid." },
-            { es_q: "¿Qué es la manga?", en_q: "What is the beam?", es_a: "Ancho máximo del casco del buque.", en_a: "Maximum width of the vessel's hull." },
-            { es_q: "¿Qué es el puntal?", en_q: "What is the depth?", es_a: "Altura desde la quilla hasta la cubierta principal.", en_a: "Height from the keel to the main deck." },
-            // 71-80
-            { es_q: "¿Qué es el calado?", en_q: "What is the draft?", es_a: "Distancia vertical desde la línea de flotación hasta la quilla.", en_a: "Vertical distance from the waterline to the keel." },
-            { es_q: "¿Qué es la eslora?", en_q: "What is the length?", es_a: "Longitud total del buque de proa a popa.", en_a: "Total length of the vessel from bow to stern." },
-            { es_q: "¿Qué es el francobordo?", en_q: "What is freeboard?", es_a: "Distancia vertical entre la línea de flotación y la cubierta superior.", en_a: "Vertical distance between the waterline and the upper deck." },
-            { es_q: "¿Qué es el desplazamiento?", en_q: "What is displacement?", es_a: "Peso total del buque, equivalente al agua que desaloja.", en_a: "Total weight of the vessel, equivalent to the water it displaces." },
-            { es_q: "¿Qué es el porte (DWT)?", en_q: "What is deadweight tonnage (DWT)?", es_a: "Indicador de la capacidad máxima de carga útil del buque.", en_a: "Indicator of the vessel's maximum payload capacity." },
-            { es_q: "¿Qué es el tonelaje bruto?", en_q: "What is gross tonnage?", es_a: "Peso total del buque incluyendo la carga.", en_a: "Total weight of the vessel including cargo." },
-            { es_q: "¿Qué es la autonomía?", en_q: "What is endurance?", es_a: "Tiempo máximo que el buque puede navegar sin reabastecerse.", en_a: "Maximum time the vessel can sail without replenishing." },
-            { es_q: "¿Qué es el radio de acción?", en_q: "What is range?", es_a: "Distancia máxima de ida y vuelta sin repostar combustible.", en_a: "Maximum round trip distance without refueling." },
-            { es_q: "¿Qué es el círculo evolutivo?", en_q: "What is the turning circle?", es_a: "Trayectoria que describe el buque al girar con timón fijo.", en_a: "Path described by the vessel when turning with fixed rudder." },
-            { es_q: "¿Qué es la guinda?", en_q: "What is air draft?", es_a: "Altura desde la flotación hasta el punto más alto del palo.", en_a: "Height from the waterline to the highest point of the mast." },
-            // 81-90
-            { es_q: "¿Qué es una cuaderna?", en_q: "What is a frame?", es_a: "Pieza curva transversal que da rigidez al casco ('costilla').", en_a: "Transverse curved piece that gives rigidity to the hull ('rib')." },
-            { es_q: "¿Qué es un bao?", en_q: "What is a beam?", es_a: "Viga transversal que sostiene las cubiertas y afirma los costados.", en_a: "Transverse beam that supports the decks and reinforces the sides." },
-            { es_q: "¿Qué es la regala?", en_q: "What is the gunwale?", es_a: "Parte superior de la borda que la cubre.", en_a: "Upper part of the bulwark that covers it." },
-            { es_q: "¿Qué es una varenga?", en_q: "What is a floor?", es_a: "Refuerzo transversal que une quilla, cuaderna y sobrequilla.", en_a: "Transverse reinforcement joining keel, frame, and keelson." },
-            { es_q: "¿Qué materiales se usan en construcción naval?", en_q: "What materials are used in shipbuilding?", es_a: "Madera, acero, aluminio, fibra de vidrio y kevlar.", en_a: "Wood, steel, aluminum, fiberglass, and kevlar." },
-            { es_q: "¿Qué caracteriza a una embarcación menor?", en_q: "What characterizes a small craft?", es_a: "Dimensiones pequeñas, usada para recreo, pesca o transporte corto.", en_a: "Small dimensions, used for recreation, fishing, or short transport." },
-            { es_q: "¿Qué es un remolcador de hélice?", en_q: "What is a conventional tug?", es_a: "Usa hélices fijas y timón para dirigir el empuje.", en_a: "Uses fixed propellers and rudder to direct thrust." },
-            { es_q: "¿Qué es un remolcador azimutal?", en_q: "What is an azimuth tug?", es_a: "Tiene unidades de propulsión que giran 360°.", en_a: "Has propulsion units that rotate 360°." },
-            { es_q: "¿Quiénes fueron los primeros constructores de barcos?", en_q: "Who were the first shipbuilders?", es_a: "Los egipcios, hace casi 11,000 años.", en_a: "The Egyptians, nearly 11,000 years ago." },
-            { es_q: "¿Para qué servían las naves egipcias en el Nilo?", en_q: "What were Egyptian ships used for on the Nile?", es_a: "Transporte de piedras para pirámides, mercancías y personas.", en_a: "Transport of stones for pyramids, goods, and people." },
-            // 91-100
-            { es_q: "¿Qué es un birreme?", en_q: "What is a bireme?", es_a: "Barco con dos filas de remos por cada lado.", en_a: "Ship with two rows of oars on each side." },
-            { es_q: "¿Qué es un trirreme?", en_q: "What is a trireme?", es_a: "Barco con tres filas de remos por cada lado.", en_a: "Ship with three rows of oars on each side." },
-            { es_q: "¿Qué era el drakkar?", en_q: "What was the longship?", es_a: "Barco vikingo sólido para combate y viajes largos.", en_a: "Solid Viking ship for combat and long voyages." },
-            { es_q: "¿En qué siglos se dieron los mayores viajes de exploración?", en_q: "In which centuries did the major exploration voyages occur?", es_a: "Siglos XV y XVI.", en_a: "15th and 16th centuries." },
-            { es_q: "¿Qué tipo de nave usó Colón para descubrir América?", en_q: "What type of ship did Columbus use to discover America?", es_a: "Una carabela.", en_a: "A caravel." },
-            { es_q: "¿Qué navegantes dieron la primera vuelta al mundo?", en_q: "Which navigators completed the first circumnavigation?", es_a: "Fernando de Magallanes y Juan Sebastián Elcano.", en_a: "Ferdinand Magellan and Juan Sebastián Elcano." },
-            { es_q: "¿Qué era el bajel?", en_q: "What was the man-of-war?", es_a: "Considerado el acorazado de la época de la navegación a vela.", en_a: "Considered the battleship of the age of sail." },
-            { es_q: "¿Qué eran los Clipper?", en_q: "What were Clippers?", es_a: "Veleros veloces y elegantes del siglo XIX.", en_a: "Fast and elegant sailing ships of the 19th century." },
-            { es_q: "¿Cuándo sustituyó el vapor a la vela en mercantes?", en_q: "When did steam replace sail in merchant ships?", es_a: "A comienzos del siglo XX.", en_a: "At the beginning of the 20th century." },
-            { es_q: "¿Cuál fue el barco de pasajeros más famoso hundido en 1912?", en_q: "What was the most famous passenger ship sunk in 1912?", es_a: "El Titanic.", en_a: "The Titanic." }
-        ];
+        <div class="tab-content pt-2">
+            <!-- Pestaña Lecturas (oculta) -->
+            <div class="tab-pane fade" id="lectures-pane">
+                <div class="accordion" id="lecturesAccordion"></div>
+            </div>
 
-        function toggleLanguage() {
-            currentLang = currentLang === 'es' ? 'en' : 'es';
-            document.getElementById('langLabel').textContent = currentLang === 'es' ? 'English' : 'Español';
-            document.getElementById('mainTitle').textContent = currentLang === 'es' ? 'Estudio de Marinería' : 'Seamanship Study';
-            document.getElementById('prevText').textContent = currentLang === 'es' ? 'Anterior' : 'Previous';
-            document.getElementById('nextText').textContent = currentLang === 'es' ? 'Siguiente' : 'Next';
-            updateUI();
-        }
+            <!-- Pestaña FLASHCARDS (activa por defecto) -->
+            <div class="tab-pane fade show active" id="flashcards">
+                <div class="card-flip-container" id="fc-container" onclick="this.classList.toggle('flipped')">
+                    <div class="card-flip-inner" id="fc-flip">
+                        <div class="card-front shadow">
+                            <h3 id="fc-front">Cargando...</h3>
+                        </div>
+                        <div class="card-back shadow">
+                            <p id="fc-back" class="fs-5"></p>  <!-- Tamaño reducido -->
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center mt-4 gap-3 align-items-center">
+                    <button class="btn btn-outline-primary" onclick="changeFC(-1)">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+                    <span id="fc-counter" class="fw-bold"></span>
+                    <button class="btn btn-outline-primary" onclick="changeFC(1)">
+                        <i class="bi bi-chevron-right"></i>
+                    </button>
+                    <button class="btn btn-outline-secondary" onclick="shuffleFlashcards()" title="Mezclar flashcards">
+                        <i class="bi bi-shuffle"></i>
+                    </button>
+                </div>
+            </div>
 
-        function updateUI() {
-            const cardElement = document.getElementById('card');
-            cardElement.classList.remove('flipped');
-            
-            setTimeout(() => {
-                const item = data[currentIndex];
-                document.getElementById('question').textContent = item[`${currentLang}_q`];
-                document.getElementById('answer').textContent = item[`${currentLang}_a`];
-                
-                const label = currentLang === 'es' ? 'Tarjeta' : 'Card';
-                const separator = currentLang === 'es' ? 'de' : 'of';
-                document.getElementById('progress').textContent = `${label} ${currentIndex + 1} ${separator} ${data.length}`;
-                
-                document.getElementById('prevBtn').disabled = currentIndex === 0;
-                document.getElementById('nextBtn').disabled = currentIndex === data.length - 1;
-            }, 150);
-        }
+            <!-- Pestaña QUIZ (contenido dinámico) -->
+            <div class="tab-pane fade" id="quiz">
+                <div id="quiz-container" class="text-center py-4">
+                    <!-- El JS inyectará las preguntas aquí -->
+                    <p class="text-muted">Cargando preguntas...</p>
+                </div>
+                <div class="d-flex justify-content-center mt-3 gap-3">
+                    <button class="btn btn-primary" id="restartQuiz" onclick="resetQuiz()">Reintentar Quiz</button>
+                </div>
+            </div>
 
-        function flipCard() { document.getElementById('card').classList.toggle('flipped'); }
-        function nextCard() { if (currentIndex < data.length - 1) { currentIndex++; updateUI(); } }
-        function prevCard() { if (currentIndex > 0) { currentIndex--; updateUI(); } }
+            <!-- Pestaña ANEXOS (imágenes de referencia) -->
+            <div class="tab-pane fade hidden" id="anexos">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm">
+                            <img src="https://via.placeholder.com/400x200?text=Partes+del+buque" class="card-img-top" alt="Partes del buque">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Partes del buque</h5>
+                                <p class="card-text">Proa, popa, costados, obra viva, obra muerta.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm">
+                            <img src="https://via.placeholder.com/400x200?text=Anclas+y+sus+partes" class="card-img-top" alt="Anclas">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Anclas</h5>
+                                <p class="card-text">Tipos: Almirantazgo, Danforth, Hall, CQR.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm">
+                            <img src="https://via.placeholder.com/400x200?text=Luces+de+navegación" class="card-img-top" alt="Luces">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Luces de navegación</h5>
+                                <p class="card-text">Babor, estribor, alcance, tope, fondeo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm">
+                            <img src="https://via.placeholder.com/400x200?text=Marcas+de+francobordo" class="card-img-top" alt="Disco Plimsoll">
+                            <div class="card-body text-center">
+                                <h5 class="card-title">Disco Plimsoll</h5>
+                                <p class="card-text">Límites de carga según zona y temporada.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        updateUI();
-    </script>
+            <!-- Pestaña Resumen (oculta) -->
+            <div class="tab-pane fade" id="summary">
+                <p class="text-muted">Resumen – en construcción.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER (obligatorio) -->
+    <footer class="mt-auto">
+        <p class="foot">
+            Elaborado por
+            <a href="https://www.linkedin.com/in/vonusma/" target="_blank" rel="noopener noreferrer">
+                Sergio Usma · Ciencias Náuticas 2026
+            </a>
+        </p>
+    </footer>
+
+    <!-- Botón flotante modo oscuro (móvil) -->
+    <button class="dark-mode-floating btn btn-icon" id="darkModeFloating" type="button" aria-label="Alternar modo oscuro">
+        <i class="bi bi-moon-fill dark-mode-icon"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Script personalizado -->
+    <script src="script.js"></script>
 </body>
 </html>

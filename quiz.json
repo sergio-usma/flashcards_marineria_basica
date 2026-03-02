@@ -1,0 +1,522 @@
+[
+    {
+        "question": "¿Qué parte del buque está por encima de la línea de flotación?",
+        "options": ["Obra viva", "Obra muerta", "Pantoque", "Quilla"],
+        "correct": 1
+    },
+    {
+        "question": "¿Cómo se llama la pieza estructural que va de proa a popa en la parte inferior?",
+        "options": ["Roda", "Quilla", "Codaste", "Varenga"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué movimiento describe la oscilación de un costado a otro?",
+        "options": ["Cabeceo", "Balanceo", "Arrufo", "Quebranto"],
+        "correct": 1
+    },
+    {
+        "question": "¿Cómo se llama la parte delantera del buque?",
+        "options": ["Popa", "Proa", "Estribor", "Babor"],
+        "correct": 1
+    },
+    {
+        "question": "¿Cómo se llama la parte trasera del buque?",
+        "options": ["Proa", "Popa", "Amura", "Aleta"],
+        "correct": 1
+    },
+    {
+        "question": "¿Cuál es el costado izquierdo del buque mirando de popa a proa?",
+        "options": ["Estribor", "Babor", "Través", "Crujía"],
+        "correct": 1
+    },
+    {
+        "question": "¿Cuál es el costado derecho del buque mirando de popa a proa?",
+        "options": ["Babor", "Estribor", "Amura", "Aleta"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué nombre recibe la línea imaginaria que divide el buque en dos mitades longitudinalmente?",
+        "options": ["Línea de flotación", "Crujía", "Través", "Manga"],
+        "correct": 1
+    },
+    {
+        "question": "¿Cómo se llama la parte curva del casco donde se une el costado con el fondo?",
+        "options": ["Pantoque", "Quilla", "Roda", "Codaste"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué son las 'costillas' del buque?",
+        "options": ["Bao", "Cuadernas", "Varengas", "Eslora"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué elemento estructural sostiene las cubiertas y va de un costado a otro?",
+        "options": ["Bao", "Cuaderna", "Varenga", "Puntal"],
+        "correct": 0
+    },
+    {
+        "question": "¿Cómo se llama la parte superior de la borda?",
+        "options": ["Regala", "Trancanil", "Baranda", "Cubierta"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué parte del buque está sumergida?",
+        "options": ["Obra muerta", "Obra viva", "Francobordo", "Cubierta"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es la manga de un buque?",
+        "options": ["La longitud", "La anchura", "La altura", "El calado"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es la eslora?",
+        "options": ["La anchura", "La longitud", "La altura", "El peso"],
+        "correct": 1
+    },
+    {
+        "question": "¿Cómo se llama la altura desde la quilla hasta la cubierta principal?",
+        "options": ["Calado", "Puntal", "Francobordo", "Guinda"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es el calado?",
+        "options": ["Distancia desde la quilla hasta la cubierta", "Distancia desde la flotación hasta la quilla", "Ancho del buque", "Altura del palo"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es el francobordo?",
+        "options": ["Distancia desde la flotación hasta la cubierta superior", "Distancia desde la quilla a la flotación", "Altura del palo", "Longitud total"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué indica el término 'a barlovento'?",
+        "options": ["Hacia donde va el viento", "De donde viene el viento", "Dirección de la corriente", "Lado contrario al viento"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué indica 'a sotavento'?",
+        "options": ["De donde viene el viento", "Hacia donde va el viento", "Lado expuesto al viento", "Dirección del buque"],
+        "correct": 1
+    },
+    {
+        "question": "¿Cómo se llama la acción de colocar el buque paralelo al muelle?",
+        "options": ["Fondear", "Atracar", "Abarloar", "Acoderar"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué significa 'fondear'?",
+        "options": ["Amarrar a un muelle", "Echar el ancla", "Encallar", "Girar sobre el ancla"],
+        "correct": 1
+    },
+    {
+        "question": "¿Cómo se llama el arrastre involuntario del ancla?",
+        "options": ["Borneo", "Garreo", "Cabeceo", "Deriva"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué movimiento es el cabeceo?",
+        "options": ["De lado a lado", "Sube y baja la proa y popa", "Giro sobre el ancla", "Inclinación lateral"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es el timón?",
+        "options": ["Dispositivo para medir la profundidad", "Dispositivo para gobernar el buque", "Ancla pequeña", "Cabo de amarre"],
+        "correct": 1
+    },
+    {
+        "question": "¿Cómo se llama la pieza donde se fija la cadena del ancla?",
+        "options": ["Arganeo", "Cepo", "Uña", "Caña"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es una boya?",
+        "options": ["Ancla flotante", "Cuerpo flotante anclado para señalización", "Tipo de cabo", "Parte del motor"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué significa 'izar'?",
+        "options": ["Bajar algo", "Subir algo", "Amarrar", "Soltar"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué significa 'arriar'?",
+        "options": ["Subir", "Bajar", "Girar", "Fijar"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es la quilla?",
+        "options": ["Pieza longitudinal inferior", "Pieza vertical en proa", "Pieza en popa", "Refuerzo transversal"],
+        "correct": 0
+    },
+    {
+        "question": "¿Cómo se llama la parte delantera del casco que corta el agua?",
+        "options": ["Popa", "Roda", "Codaste", "Aleta"],
+        "correct": 1
+    },
+    {
+        "question": "¿Cómo se llama la parte trasera del casco?",
+        "options": ["Proa", "Roda", "Codaste", "Amura"],
+        "correct": 2
+    },
+    {
+        "question": "¿Qué son las aletas?",
+        "options": ["Partes curvas de proa", "Partes a 45° de la popa", "Refuerzos del casco", "Luces de navegación"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué son las amuras?",
+        "options": ["Partes curvas de proa entre 45° y 60°", "Partes de popa", "Costados", "Cubiertas"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es el espejo de popa?",
+        "options": ["La parte plana de la popa", "La proa", "El costado", "La cubierta"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es la sentina?",
+        "options": ["Cavidad inferior donde se acumula agua", "Cubierta superior", "Mástil", "Bodega de carga"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es el girocompás?",
+        "options": ["Indica la profundidad", "Indica el norte electrónicamente", "Mide la velocidad", "Mide la presión"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué mide el barómetro?",
+        "options": ["Temperatura", "Presión atmosférica", "Humedad", "Velocidad del viento"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es el desplazamiento de un buque?",
+        "options": ["Peso total del buque", "Volumen de carga", "Longitud", "Velocidad"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es el porte (DWT)?",
+        "options": ["Peso del buque vacío", "Capacidad máxima de carga útil", "Longitud", "Calado"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es la estabilidad?",
+        "options": ["Capacidad de flotar", "Capacidad de volver a la posición de equilibrio", "Resistencia a la rotura", "Velocidad"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es la flotabilidad?",
+        "options": ["Capacidad de mantenerse a flote", "Capacidad de girar", "Capacidad de carga", "Resistencia al viento"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué significa 'a la deriva'?",
+        "options": ["Buque anclado", "Buque sin gobierno", "Buque atracado", "Buque en movimiento"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es un cabo?",
+        "options": ["Una cuerda gruesa", "Una vela", "Un motor", "Un ancla"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es una bita?",
+        "options": ["Pieza para amarrar cabos", "Tipo de ancla", "Luz de navegación", "Parte del mástil"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es un remolcador?",
+        "options": ["Barco pequeño de recreo", "Barco diseñado para maniobrar otros buques", "Barco de carga", "Barco de pasajeros"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es el casco?",
+        "options": ["El cuerpo del buque", "La cubierta", "El motor", "El mástil"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es la cubierta?",
+        "options": ["El piso del buque", "El techo", "El costado", "La quilla"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es el mástil o palo?",
+        "options": ["Estructura vertical para velas y banderas", "Parte del ancla", "Tipo de cabo", "Luz de navegación"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué son las luces de navegación?",
+        "options": ["Luces para pescar", "Luces reglamentarias para evitar colisiones", "Luces de cabina", "Luces de cubierta"],
+        "correct": 1
+    },
+    {
+        "question": "¿Cuál es el ángulo de cobertura de la luz de babor?",
+        "options": ["112.5°", "135°", "225°", "360°"],
+        "correct": 0
+    },
+    {
+        "question": "¿Cuál es el ángulo de cobertura de la luz de estribor?",
+        "options": ["112.5°", "135°", "225°", "360°"],
+        "correct": 0
+    },
+    {
+        "question": "¿Cuál es el ángulo de la luz de tope (mástil)?",
+        "options": ["112.5°", "135°", "225°", "360°"],
+        "correct": 2
+    },
+    {
+        "question": "¿Cuál es el ángulo de la luz de alcance?",
+        "options": ["112.5°", "135°", "225°", "360°"],
+        "correct": 1
+    },
+    {
+        "question": "¿De qué color es la luz de babor?",
+        "options": ["Verde", "Roja", "Blanca", "Amarilla"],
+        "correct": 1
+    },
+    {
+        "question": "¿De qué color es la luz de estribor?",
+        "options": ["Roja", "Verde", "Blanca", "Amarilla"],
+        "correct": 1
+    },
+    {
+        "question": "¿De qué color es la luz de tope?",
+        "options": ["Roja", "Verde", "Blanca", "Amarilla"],
+        "correct": 2
+    },
+    {
+        "question": "¿Qué indica el último grillete de una cadena de ancla (el que va unido al ancla)?",
+        "options": ["Color rojo", "Color amarillo", "Color blanco", "Color azul"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué color tiene el penúltimo grillete de una cadena de ancla?",
+        "options": ["Rojo", "Amarillo", "Blanco", "Azul"],
+        "correct": 1
+    },
+    {
+        "question": "Si un buque tiene 3 grilletes de cadena, ¿de qué color es el primer grillete (el más cercano al ancla)?",
+        "options": ["Rojo", "Amarillo", "Blanco", "Azul"],
+        "correct": 0
+    },
+    {
+        "question": "Si un buque tiene 4 grilletes de cadena, ¿de qué color es el segundo grillete?",
+        "options": ["Rojo", "Amarillo", "Blanco", "Azul"],
+        "correct": 2
+    },
+    {
+        "question": "Si un buque tiene 5 grilletes de cadena, ¿de qué color es el tercer grillete?",
+        "options": ["Rojo", "Amarillo", "Blanco", "Azul"],
+        "correct": 3
+    },
+    {
+        "question": "Si un buque tiene 6 grilletes de cadena, ¿de qué color es el cuarto grillete?",
+        "options": ["Rojo", "Amarillo", "Blanco", "Azul"],
+        "correct": 2
+    },
+    {
+        "question": "Si un buque tiene 7 grilletes de cadena, ¿de qué color es el quinto grillete?",
+        "options": ["Rojo", "Amarillo", "Blanco", "Azul"],
+        "correct": 3
+    },
+    {
+        "question": "¿Cuántos eslabones tiene normalmente un grillete de cadena?",
+        "options": ["15", "25", "27", "30"],
+        "correct": 2
+    },
+    {
+        "question": "¿Cómo se llama el grillete que une dos tramos de cadena?",
+        "options": ["Grillete de unión", "Grillete de entalingadura", "Grillete de escape", "Grillete giratorio"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué parte del ancla se fija al arganeo?",
+        "options": ["La cadena", "El cepo", "La uña", "La caña"],
+        "correct": 0
+    },
+    {
+        "question": "¿Cuál es la función del orinque?",
+        "options": ["Señalar la posición del ancla", "Fijar el ancla al fondo", "Amarrar el buque", "Izar la bandera"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es un borneo?",
+        "options": ["Giro del buque alrededor del ancla", "Movimiento de balanceo", "Tipo de ancla", "Cabo de amarre"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué significa que el ancla esté 'a pique'?",
+        "options": ["Ancla en el fondo", "Ancla colgando justo después de despegar del fondo", "Ancla guardada", "Ancla perdida"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué significa que el ancla esté 'a flor de agua'?",
+        "options": ["Ancla en el fondo", "Ancla en la superficie", "Ancla colgando cerca del agua", "Ancla izada a bordo"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué tipo de ancla es el CQR?",
+        "options": ["Ancla de arado", "Ancla Danforth", "Ancla Almirantazgo", "Ancla Hall"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué tipo de ancla tiene un cepo fijo?",
+        "options": ["Ancla Almirantazgo", "Ancla Danforth", "Ancla Hall", "Ancla CQR"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es la roda?",
+        "options": ["Pieza que prolonga la quilla en proa", "Pieza en popa", "Costado", "Cubierta"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es el codaste?",
+        "options": ["Pieza en proa", "Pieza en popa", "Pieza central", "Pieza superior"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué son las varengas?",
+        "options": ["Refuerzos transversales sobre la quilla", "Cuadernas", "Baos", "Puntales"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es el trancanil?",
+        "options": ["Pieza que une la cubierta con el forro", "Parte de la borda", "Tipo de cabo", "Luz de navegación"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué mide el estadímetro?",
+        "options": ["Distancia con altura conocida", "Presión atmosférica", "Velocidad", "Profundidad"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es el círculo evolutivo?",
+        "options": ["Trayectoria del buque al girar con timón fijo", "Círculo de deriva", "Órbita del ancla", "Giro de 360°"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es la guinda?",
+        "options": ["Altura desde flotación hasta el punto más alto del palo", "Distancia vertical desde quilla a cubierta", "Calado", "Manga"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es el arrufo?",
+        "options": ["Deformación con extremos más altos que el centro", "Deformación con extremos más bajos", "Inclinación lateral", "Balanceo"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es el quebranto?",
+        "options": ["Deformación con extremos más bajos que el centro", "Deformación con extremos más altos", "Rotura de la quilla", "Falla estructural"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué significa estar 'apopado'?",
+        "options": ["Mayor calado a popa", "Mayor calado a proa", "Inclinado a babor", "Inclinado a estribor"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué significa estar 'aproado'?",
+        "options": ["Mayor calado a proa", "Mayor calado a popa", "Inclinado a babor", "Inclinado a estribor"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es la velocidad económica?",
+        "options": ["Velocidad máxima", "Velocidad óptima para ahorrar combustible", "Velocidad mínima", "Velocidad de maniobra"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es la autonomía de un buque?",
+        "options": ["Distancia máxima que puede recorrer", "Tiempo máximo sin reabastecerse", "Capacidad de carga", "Velocidad crucero"],
+        "correct": 1
+    },
+    {
+        "question": "¿Qué es el radio de acción?",
+        "options": ["Distancia de ida y vuelta sin repostar", "Distancia máxima en línea recta", "Área de maniobra", "Círculo de giro"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué indican las marcas de francobordo (disco Plimsoll)?",
+        "options": ["Límite máximo de carga según zona", "Calado máximo", "Eslora", "Manga"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué significa la marca TF en el disco Plimsoll?",
+        "options": ["Agua dulce tropical", "Agua dulce", "Agua de mar tropical", "Invierno Atlántico Norte"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué significa la marca WNA?",
+        "options": ["Invierno en el Atlántico Norte", "Agua dulce", "Agua de mar tropical", "Verano"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es la sentina?",
+        "options": ["Cavidad inferior donde se acumulan aguas filtradas", "Cubierta de popa", "Compartimento de máquinas", "Depósito de agua dulce"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es una cabilla?",
+        "options": ["Clavija para amarrar cabos", "Pieza de la cadena", "Tipo de ancla", "Luz de navegación"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es el cabillero?",
+        "options": ["Tablón con agujeros para cabillas", "Cabo grueso", "Mástil pequeño", "Parte del timón"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es la barloa?",
+        "options": ["Cabo para amarrar a muelle", "Luz de babor", "Viento de proa", "Tipo de ancla"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es la codera?",
+        "options": ["Cabo desde popa para maniobras", "Cabo desde proa", "Luz de estribor", "Parte del ancla"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es el pito marinero?",
+        "options": ["Instrumento para dar órdenes", "Silbato de niebla", "Tipo de nudo", "Parte del mástil"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es el telégrafo de máquinas?",
+        "options": ["Comunicador de órdenes a sala de máquinas", "Telégrafo inalámbrico", "Sistema de navegación", "Radar"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es la vista clara?",
+        "options": ["Disco giratorio para visibilidad en lluvia", "Ventana de proa", "Tipo de faro", "Luz de navegación"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué materiales se usan en construcción naval?",
+        "options": ["Acero, aluminio, fibra de vidrio", "Solo madera", "Solo acero", "Hormigón"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es un birreme?",
+        "options": ["Barco con dos filas de remos", "Barco con tres filas", "Barco vikingo", "Barco de vapor"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué es un trirreme?",
+        "options": ["Barco con tres filas de remos", "Barco con dos filas", "Barco de guerra", "Barco mercante"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué era el drakkar?",
+        "options": ["Barco vikingo", "Barco romano", "Barco egipcio", "Barco chino"],
+        "correct": 0
+    },
+    {
+        "question": "¿Qué tipo de barco usó Colón?",
+        "options": ["Carabela", "Galeón", "Fragata", "Clipper"],
+        "correct": 0
+    },
+    {
+        "question": "¿Quiénes dieron la primera vuelta al mundo?",
+        "options": ["Magallanes y Elcano", "Colón", "Vasco da Gama", "Cook"],
+        "correct": 0
+    }
+]
